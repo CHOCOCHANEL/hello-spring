@@ -29,4 +29,43 @@ public class HelloController {
         // test url ::: localhost:8080/hello-api?apiNm=IF-API-026801
         return apiNm;
     }
+
+    @GetMapping("/hello-api2")
+    @ResponseBody
+    public Hello helloApi2(@RequestParam(value = "name", defaultValue = "test") String name,
+                           @RequestParam(value = "country", defaultValue = "KOR") String country) {
+        Hello hello = new Hello();
+        hello.setName(name);
+        hello.setCountry(country);
+        System.out.println("LOGGER : HelloController.helloApi2 ::: hello = \n\n" + hello);
+        return hello;
+    }
+
+    static class Hello {
+        private String name;
+        private String country;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        @Override
+        public String toString() {
+            return "Hello{" +
+                    "name='" + name + '\'' +
+                    ", country='" + country + '\'' +
+                    '}';
+        }
+    }
 }
