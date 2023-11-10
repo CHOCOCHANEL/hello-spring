@@ -10,4 +10,5 @@ public interface MemberRepository {
     public Optional<Member> findById(Long id); // Optional - since java8
     public Optional<Member> findByName(String name);
     public List<Member> findAll();
+    public void clearStore();
 }
